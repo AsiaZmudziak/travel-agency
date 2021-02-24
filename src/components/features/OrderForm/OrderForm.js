@@ -20,6 +20,7 @@ const OrderForm = ({tripCost, options}) => (
   </Row>
 );
 
+
 OrderForm.propTypes = {
   tripCost: PropTypes.string,
   options: PropTypes.object,
