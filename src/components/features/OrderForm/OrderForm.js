@@ -17,8 +17,9 @@ const OrderForm = props => (
           setOrderOption={props.setOrderOption}
         />
       </Col>
-    ))}
-    <Col xs={12}>
+    ))} 
+    
+    <Col xs={12}> 
       <OrderSummary tripCost={props.tripCost} options={props.options} />
     </Col>
   </Row>
