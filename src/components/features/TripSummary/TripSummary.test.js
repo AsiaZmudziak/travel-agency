@@ -5,9 +5,34 @@ import TripSummary from './TripSummary';
 describe('Component TripSummary', () => {
   it('should generate a link to the correct address', () => {
     const expectedLink = '/trip/abc';
-    const component = shallow(<TripSummary id={expectedLink} />);
+    const component = shallow(<TripSummary id='abc' />);
 
     expect(component.find('.link').prop('to')).toEqual(expectedLink);
+  });
+
+  /*it('should throw error without required props', () => {
+    expect(() => shallow(<TripSummary />)).toThrow();
+  });*/
+
+  it('should render correct prop name, cost and days', () => {
+    const expectedName = 'Lorem ipsum';
+    const expectedCost = '100';
+    const expectedDays = '7';
+    const component = shallow(<TripSummary name={expectedName} cost={expectedCost} days={expectedDays}/>);
+
+    expect(component.find('.title').text()).toEqual(expectedName);
+    expect(
+      component
+        .find('.details span')
+        .at(0)
+        .text()
+    ).toEqual(`${expectedDays} days`);
+    expect(
+      component
+        .find('.details span')
+        .at(1)
+        .text()
+    ).toEqual(`from ${expectedCost}`);
   });
 
   it('does <img> have the correct src and alt', () => {
@@ -19,21 +44,27 @@ describe('Component TripSummary', () => {
     expect(component.find('img').prop('src')).toEqual(expectedSrc);
   });
 
-  it('should render correct prop name, cost and days', () => {
-    const expectedName = 'name';
-    const expectedCost = 'cost';
-    const expectedDuration = 'days';
-    const component = shallow(<TripSummary name={expectedName} cost={expectedCost} days={expectedDuration}/>);
-
-    expect(component.find('.title').prop('name')).toEqual(expectedName);
-    expect(component.find('.details').prop('cost')).toEqual(expectedCost);
-    expect(component.find('.details').prop('days')).toEqual(expectedDuration);
+  it('should render correct tags array', () => {
+    const expectedTags = ['one', 'two', 'three'];
+    const component = shallow(<TripSummary tags={expectedTags} />);
+    expect(
+      component
+        .find('.tags span')
+        .at(0)
+        .text()
+    ).toEqual(expectedTags[0]);
+    expect(
+      component
+        .find('.tags span')
+        .at(1)
+        .text()
+    ).toEqual(expectedTags[1]);
+    expect(
+      component
+        .find('.tags span')
+        .at(2)
+        .text()
+    ).toEqual(expectedTags[2]);
   });
-
-  it('should throw error without required props', () => {
-    expect(() => shallow(<TripSummary />)).toThrow();
-  });
-
-  //should render correct tags array
 
 });
