@@ -10,9 +10,9 @@ describe('Component TripSummary', () => {
     expect(component.find('.link').prop('to')).toEqual(expectedLink);
   });
 
-  /*it('should throw error without required props', () => {
+  it('should throw error without required props', () => {
     expect(() => shallow(<TripSummary />)).toThrow();
-  });*/
+  });
 
   it('should render correct prop name, cost and days', () => {
     const expectedName = 'Lorem ipsum';
