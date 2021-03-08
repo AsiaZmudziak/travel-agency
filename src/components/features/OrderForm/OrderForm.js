@@ -12,12 +12,15 @@ import OrderOption from '../OrderOption/OrderOption';
 import Button from '../../common/Button/Button';
 import settings from '../../../data/settings';
 
-const sendOrder = (options, tripCost) => {
+const sendOrder = (options, tripCost, tripName, tripId, countryCode) => {
   const totalCost = formatPrice(calculateTotal(tripCost, options));
   
   const payload = {
     ...options,
     totalCost,
+    tripName,
+    tripId,
+    countryCode,
   };
   
   const url = settings.db.url + '/' + settings.db.endpoint.orders;
@@ -53,9 +56,18 @@ const OrderForm = props => (
     <Col xs={12}> 
       <OrderSummary tripCost={props.tripCost} options={props.options} />
       <Button
+        disabled={props.options.name == '' || props.options.contact == ''}
         onClick={() =>
-          sendOrder(props.options, props.tripCost, props.tripId, props.countryCode, props.tripName)}>
-        Order now!
+          sendOrder(
+            props.options,
+            props.tripCost,
+            props.tripName,
+            props.tripId,
+            props.countryCode
+          )
+        }
+      >
+      Order now!
       </Button>
     </Col>
   </Row>
@@ -65,9 +77,9 @@ OrderForm.propTypes = {
   tripCost: PropTypes.string,
   options: PropTypes.object,
   setOrderOption: PropTypes.func,
-  tripId: PropTypes.number,
-  countryCode: PropTypes.object,
   tripName: PropTypes.string,
+  tripId: PropTypes.string,
+  countryCode: PropTypes.string,
 };
 
 export default OrderForm;
