@@ -36,12 +36,13 @@ describe('Component TripSummary', () => {
   });
 
   it('does <img> have the correct src and alt', () => {
-    const expectedAlt = 'text';
     const expectedSrc = 'image';
-    const component = shallow(<TripSummary src={expectedSrc} alt={expectedAlt}/>);
+    const expectedAlt = 'text';
+    const component = shallow(<TripSummary image={expectedSrc} name={expectedAlt} />
+    );
 
-    expect(component.find('image').prop('src')).toEqual(expectedSrc);
-    expect(component.find('image').prop('alt')).toEqual(expectedAlt);
+    expect(component.find('img').prop('src')).toEqual(expectedSrc);
+    expect(component.find('img').prop('alt')).toEqual(expectedAlt);
   });
 
   it('should render correct tags array', () => {
