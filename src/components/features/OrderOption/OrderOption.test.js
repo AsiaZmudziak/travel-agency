@@ -125,14 +125,19 @@ for(let type in optionTypes){
         /* tests for icons */ 
      
         it('contains div with icon class', () => {
-          const icons = renderedSubcomponent.find('div .icon');
-          expect(icons.length).toBe(mockProps.values.length);
+          const div = renderedSubcomponent.find('.icon .icon');
+          expect(div).toHaveLength(3);
+
+          const divActive = renderedSubcomponent.find('.iconActive');
+          expect(divActive.length).toBe(1);
         });
-        
+
         it('should run setOrderOption function on click', () => {
-          renderedSubcomponent.find('div .icon').last().simulate('click');
+          renderedSubcomponent
+            .find('.icon')
+            .at(1)
+            .simulate('click');
           expect(mockSetOrderOption).toBeCalledTimes(1);
-          expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
         });
         break;
       }
