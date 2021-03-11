@@ -63,7 +63,7 @@ const testValueNumber = 3;
 for(let type in optionTypes){
   describe(`Component OrderOption with type=${type}`, () => {
 
-    /* test setup */
+    /* test setup*/
     let component;
     let subcomponent;
     let renderedSubcomponent;
@@ -122,7 +122,7 @@ for(let type in optionTypes){
       }
       case 'icons': {
 
-        /* tests for icons */
+        /* tests for icons */ 
      
         it('contains div with icon class', () => {
           const icons = renderedSubcomponent.find('div .icon');
