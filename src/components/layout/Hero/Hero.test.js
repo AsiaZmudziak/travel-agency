@@ -8,7 +8,7 @@ describe('Component Hero', () => {
       <Hero titleText="Lorem ipsum" imageSrc="image" />
     );
     expect(component).toBeTruthy();
-    console.log(component.debug());
+    //console.log(component.debug());
   });
 
   it('should throw error without required props', () => {
