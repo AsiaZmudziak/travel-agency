@@ -8,7 +8,7 @@ const select = {
 };
 
 const mockProps = {
-  title: 'test text',
+  title: 'Happy Hour',
   promoDescription: 'All offers 20% off!',
 };
 

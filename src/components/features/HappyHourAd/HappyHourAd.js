@@ -15,7 +15,7 @@ class HappyHourAd extends React.Component {
 
   mockProps = {
     title: 'Happy Hour',
-    promoDescription: ' All offers 20% off!',
+    promoDescription: 'All offers 20% off!',
   };
 
   getCountdownTime() {
